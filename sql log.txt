@@ -1,0 +1,409 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red56\green56\blue56;\red247\green247\blue247;\red109\green109\blue109;
+\red202\green202\blue202;}
+{\*\expandedcolortbl;;\cssrgb\c28235\c28235\c28235;\cssrgb\c97647\c97647\c97647;\cssrgb\c50196\c50196\c50196;
+\cssrgb\c83137\c83137\c83137;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14920\viewh12720\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 STEP 1: SELECT * FROM crime_scene_report WHERE city = "SQL City" AND date = 20180115 AND type = "murder"\
+\
+RESULT 1: \
+Murder description:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs27\fsmilli13600 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Security footage shows that there were 2 witnesses. The first witness lives at the last house on "Northwestern Dr". The second witness, named Annabel, lives somewhere on "Franklin Ave".\
+\
+STEP 2:\
+Witness 1: SELECT * FROM person WHERE address_street_name = "Northwestern Dr" ORDER BY address_number DESC LIMIT 1\
+\
+RESULT Witness 1: id: 14887, name: Morty Shapiro, license_id: 118009, address_number: 4919, son: 111564949\
+\
+Witness 2: SELECT * FROM person WHERE address_street_name = "Franklin Ave" AND name LIKE "%Annabel%"\
+\
+RESULT Witness 2: id: 16371, name: Annabel Miller, license_id: 490173, address_number: 103, son: 318771143\
+\
+STEP 3: SELECT * FROM interview WHERE person_id = 14887 OR person_id = 16371\
+\
+RESULT transcript 1: I heard a gunshot and then saw a man run out. He had a "Get Fit Now Gym" bag. The membership number on the bag started with "48Z". Only gold members have those bags. The man got into a car with a plate that included "H42W".\
+\
+RESULT transcript 2: I saw the murder happen, and I recognized the killer from my gym when I was working out last week on January the 9th.\
+\
+STEP 4:\
+Clue 1: SELECT * FROM get_fit_now_member WHERE membership_status = "gold" AND id LIKE "48Z%"\
+\
+RESULT Clue 1:\
+	- id: 48Z7A, person_id: 28819, name: Joe Germuska, membership_start_date: 20160305\
+	- id: 48Z55, person_id: 67318, name: Jeremy Bowers, membership_start_date: 20160101\
+\
+Clue 2: SELECT * FROM (SELECT * FROM person JOIN drivers_license ON person.license_id=drivers_license.id) WHERE plate_number LIKE "%H42W%"\
+\
+RESULT Clue 2:\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrt\brdrs\brdrw20\brdrcf4 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalc \clshdrawnil \clwWidth1345\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx576
+\clvertalc \clshdrawnil \clwWidth2611\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx1152
+\clvertalc \clshdrawnil \clwWidth1742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth2835\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx2304
+\clvertalc \clshdrawnil \clwWidth3590\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx2880
+\clvertalc \clshdrawnil \clwWidth2000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1509\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx4032
+\clvertalc \clshdrawnil \clwWidth854\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx4608
+\clvertalc \clshdrawnil \clwWidth1151\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1700\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx5760
+\clvertalc \clshdrawnil \clwWidth1749\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx6336
+\clvertalc \clshdrawnil \clwWidth1405\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth2348\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx7488
+\clvertalc \clshdrawnil \clwWidth1787\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx8064
+\clvertalc \clshdrawnil \clwWidth1830\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f2\b\fs32 \cf2 \cb1 \strokec2 id\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 license_id\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 address_number\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 address_street_name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 ssn\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 id:1\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 age\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 height\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 eye_color\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 hair_color\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 gender\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 plate_number\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 car_make\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 car_model\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1345\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx576
+\clvertalt \clshdrawnil \clwWidth2611\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1152
+\clvertalt \clshdrawnil \clwWidth1742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1728
+\clvertalt \clshdrawnil \clwWidth2835\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2304
+\clvertalt \clshdrawnil \clwWidth3590\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx3456
+\clvertalt \clshdrawnil \clwWidth1509\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4032
+\clvertalt \clshdrawnil \clwWidth854\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4608
+\clvertalt \clshdrawnil \clwWidth1151\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5184
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth1749\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6336
+\clvertalt \clshdrawnil \clwWidth1405\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6912
+\clvertalt \clshdrawnil \clwWidth2348\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx7488
+\clvertalt \clshdrawnil \clwWidth1787\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8064
+\clvertalt \clshdrawnil \clwWidth1830\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0\fs27\fsmilli13600 \cf2 51739\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Tushar Chandra\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 664760\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 312\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Phi St\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 137882671\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 664760\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 21\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 71\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 black\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 black\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 male\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 4H42WR\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Nissan\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Altima\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1345\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx576
+\clvertalt \clshdrawnil \clwWidth2611\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1152
+\clvertalt \clshdrawnil \clwWidth1742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1728
+\clvertalt \clshdrawnil \clwWidth2835\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2304
+\clvertalt \clshdrawnil \clwWidth3590\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx3456
+\clvertalt \clshdrawnil \clwWidth1509\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4032
+\clvertalt \clshdrawnil \clwWidth854\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4608
+\clvertalt \clshdrawnil \clwWidth1151\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5184
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth1749\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6336
+\clvertalt \clshdrawnil \clwWidth1405\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6912
+\clvertalt \clshdrawnil \clwWidth2348\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx7488
+\clvertalt \clshdrawnil \clwWidth1787\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8064
+\clvertalt \clshdrawnil \clwWidth1830\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 67318\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Jeremy Bowers\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 423327\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 530\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Washington Pl, Apt 3A\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 871539279\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 423327\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 30\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 70\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 brown\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 brown\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 male\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 0H42W2\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Chevrolet\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Spark LS\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrb\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1345\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx576
+\clvertalt \clshdrawnil \clwWidth2611\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1152
+\clvertalt \clshdrawnil \clwWidth1742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1728
+\clvertalt \clshdrawnil \clwWidth2835\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2304
+\clvertalt \clshdrawnil \clwWidth3590\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2000\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx3456
+\clvertalt \clshdrawnil \clwWidth1509\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4032
+\clvertalt \clshdrawnil \clwWidth854\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4608
+\clvertalt \clshdrawnil \clwWidth1151\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5184
+\clvertalt \clshdrawnil \clwWidth1700\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth1749\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6336
+\clvertalt \clshdrawnil \clwWidth1405\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6912
+\clvertalt \clshdrawnil \clwWidth2348\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx7488
+\clvertalt \clshdrawnil \clwWidth1787\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8064
+\clvertalt \clshdrawnil \clwWidth1830\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 78193\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Maxine Whitely\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 183779\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 110\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Fisk Rd\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 137882671\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 183779\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 21\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 65\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 blue\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 blonde\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 female\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 H42W0X\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Toyota\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Prius\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \
+Clue 3: SELECT * FROM get_fit_now_check_in WHERE membership_id = "48Z55"\
+\
+RESULT Clue 3:\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrt\brdrs\brdrw20\brdrcf4 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalc \clshdrawnil \clwWidth2630\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx2160
+\clvertalc \clshdrawnil \clwWidth2468\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth2461\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx6480
+\clvertalc \clshdrawnil \clwWidth2700\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f2\b\fs32 \cf2 \cb1 \strokec2 membership_id\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 check_in_date\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 check_in_time\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 check_out_time\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrb\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth2630\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2468\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth2461\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth2700\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0\fs27\fsmilli13600 \cf2 48Z55\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 20180109\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 1530\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 1700\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \
+SOLUTION 1: Jeremy Bowers\
+\
+STEP 2.1: SELECT * FROM interview WHERE person_id = 67318\
+\
+RESULT 2.1:\
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrt\brdrs\brdrw20\brdrcf4 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalc \clshdrawnil \clwWidth1639\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth14980\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f2\b\fs32 \cf2 \cb1 \strokec2 person_id\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 transcript\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrb\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1639\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth14980\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0\fs27\fsmilli13600 \cf2 67318\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 I was hired by a woman with a lot of money. I don't know her name but I know she's around 5'5" (65") or 5'7" (67"). She has red hair and she drives a Tesla Model S. I know that she attended the SQL Symphony Concert 3 times in December 2017.\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \
+STEP 2.2: SELECT subquery.id, subquery.name, subquery.ssn, drivers_license.height, drivers_license.hair_color, drivers_license.gender, drivers_license.car_make, drivers_license.car_model FROM (SELECT id, name, license_id, ssn FROM person JOIN facebook_event_checkin ON person.id=facebook_event_checkin.person_id WHERE event_name="SQL Symphony Concert" AND date LIKE "2017%") AS subquery JOIN drivers_license ON subquery.license_id=drivers_license.id WHERE drivers_license.gender="female" AND drivers_license.car_make="Tesla" AND drivers_license.car_model="Model S" AND drivers_license.hair_color="red"\
+\
+RESULT 2.2: \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrt\brdrs\brdrw20\brdrcf4 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalc \clshdrawnil \clwWidth1393\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx1080
+\clvertalc \clshdrawnil \clwWidth2742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx2160
+\clvertalc \clshdrawnil \clwWidth2071\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx3240
+\clvertalc \clshdrawnil \clwWidth1192\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx4320
+\clvertalc \clshdrawnil \clwWidth1811\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx5400
+\clvertalc \clshdrawnil \clwWidth1454\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx6480
+\clvertalc \clshdrawnil \clwWidth1779\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx7560
+\clvertalc \clshdrawnil \clwWidth1894\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt60 \clpadl60 \clpadb60 \clpadr60 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f2\b\fs32 \cf2 \cb1 \strokec2 id\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 name\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 ssn\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 height\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 hair_color\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 gender\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 car_make\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 car_model\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1393\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1080
+\clvertalt \clshdrawnil \clwWidth2742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2071\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx3240
+\clvertalt \clshdrawnil \clwWidth1192\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1811\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5400
+\clvertalt \clshdrawnil \clwWidth1454\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth1779\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx7560
+\clvertalt \clshdrawnil \clwWidth1894\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f1\b0\fs27\fsmilli13600 \cf2 99716\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Miranda Priestly\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 987756388\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 66\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 red\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 female\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Tesla\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Model S\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1393\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1080
+\clvertalt \clshdrawnil \clwWidth2742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2071\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx3240
+\clvertalt \clshdrawnil \clwWidth1192\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1811\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5400
+\clvertalt \clshdrawnil \clwWidth1454\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth1779\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx7560
+\clvertalt \clshdrawnil \clwWidth1894\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 99716\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Miranda Priestly\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 987756388\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 66\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 red\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 female\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Tesla\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Model S\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat3 \trbrdrl\brdrs\brdrw20\brdrcf4 \trbrdrb\brdrs\brdrw20\brdrcf4 \trbrdrr\brdrs\brdrw20\brdrcf4 
+\clvertalt \clshdrawnil \clwWidth1393\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx1080
+\clvertalt \clshdrawnil \clwWidth2742\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx2160
+\clvertalt \clshdrawnil \clwWidth2071\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx3240
+\clvertalt \clshdrawnil \clwWidth1192\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth1811\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx5400
+\clvertalt \clshdrawnil \clwWidth1454\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx6480
+\clvertalt \clshdrawnil \clwWidth1779\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx7560
+\clvertalt \clshdrawnil \clwWidth1894\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf5 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt240 \clpadl240 \clpadb240 \clpadr240 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 99716\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Miranda Priestly\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 987756388\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 66\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 red\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 female\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Tesla\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf2 Model S\cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \
+SOLUTION 2: Miranda Priestly\
+}
